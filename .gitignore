@@ -1,0 +1,6 @@
+# Java class files
+*.class
+
+# IntelliJ IDEA project files
+*.iml
+.idea/

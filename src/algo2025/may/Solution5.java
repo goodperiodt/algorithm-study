@@ -87,5 +87,7 @@ public class Solution5 {
 
         long result = s.getMinDivisorWithRemainderOne(n);
         log.info("result: "+result);
+
+        sc.close();
     }
 }

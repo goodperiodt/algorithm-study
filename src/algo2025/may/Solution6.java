@@ -55,13 +55,5 @@ public class Solution6 {
 
         List<Integer> list = s.getList(x, y);
         list.forEach(System.out::println);
-
-        // list.stream()
-                // .mapToInt(value -> value.intValue())
-                // Integer 타입의 값을 받아서, intValue() 메서드를 수행한다. Integer -> int
-                // .mapToInt(Integer::intValue)
-                // .forEach(value -> System.out.println(value));
-                // .forEach(System.out::println);
-
     }
 }

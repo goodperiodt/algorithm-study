@@ -64,5 +64,7 @@ public class ReturnReversingArray {
 
         long[] execute = rra.execute(n);
         log.info(Arrays.toString(execute));
+
+        kb.close();
     }
 }

@@ -14,18 +14,22 @@ public class GetCharacters {
     }
 
     private void checkWordLength(String word) {
-        int length = word.length(); // 4
+        int length = getWordLength(word);
         if(length < 1 || length > 100)
             throw new IllegalArgumentException("단어의 길이는 "+MIN_LENGTH+"이상 "+MAX_LENGTH+"이하여야 합니다. 입력된 단어 길이:"+length);
     }
 
+    private int getWordLength(String word) {
+        return word.length();
+    }
+
     private boolean isWordLengthIsEven(String word) {
-        int length = word.length();
+        int length = getWordLength(word);
         return length%2==0;
     }
 
     private String returnCharacter(boolean flag, String word) {
-        int length = word.length();
+        int length = getWordLength(word);
 
         if(length == 1 || length == 2) return word;
 
@@ -43,8 +47,12 @@ public class GetCharacters {
         글자 사이즈를 나눈 몫이 시작 번호가 되어 그 다음 수까지 반환한다. wordLength/2
      */
     private String returnEvenCharacters(int wordLength, String word) {
-        int i = wordLength / 2;
-        return word.substring(i-1, i+1);
+        int quotient = getQuotientDivideTwo(wordLength);
+        return word.substring(quotient-1, quotient+1);
+    }
+
+    private int getQuotientDivideTwo(int wordLength) {
+        return wordLength / 2;
     }
 
     /*
@@ -56,8 +64,7 @@ public class GetCharacters {
         subString(몫, 몫+1)
     */
     private String returnOddCharacter(int wordLength, String word) {
-        int i = wordLength / 2; // 몫
-        return word.substring(i, i+1);
+        int quotient = getQuotientDivideTwo(wordLength);// 몫
+        return word.substring(quotient, quotient+1);
     }
-
 }

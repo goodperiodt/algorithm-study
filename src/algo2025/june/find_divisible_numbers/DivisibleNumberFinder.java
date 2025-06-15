@@ -1,9 +1,7 @@
-package algo2025.june;
+package algo2025.june.find_divisible_numbers;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static algo2025.may.Util.log;
 
 public class DivisibleNumberFinder {
 

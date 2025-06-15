@@ -15,8 +15,6 @@ public class Sum {
         return sumNotExistNumbersInArray(numbers);
     }
 
-
-
     private void checkValidArrayLength(int[] numbers) {
         int length = numbers.length;
         // 배열의 길이는 0미만, 즉 음수일 수 없나?

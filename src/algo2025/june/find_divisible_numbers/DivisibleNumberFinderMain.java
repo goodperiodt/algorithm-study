@@ -1,4 +1,4 @@
-package algo2025.june;
+package algo2025.june.find_divisible_numbers;
 
 import java.util.Arrays;
 

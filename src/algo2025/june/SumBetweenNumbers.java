@@ -1,15 +1,8 @@
 package algo2025.june;
-
 // @param - 두 정수 a, b
 // @return - a와 b 사이에 속한 모든 정수의 합
 // ex. a = 3, b = 5인 경우, 3 + 4 + 5 = 12이므로 12를 리턴
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static algo2025.may.Util.log;
-
 // condition
 // a와 b가 같은 경우, 둘 중 아무 수나 리턴.
 // a와 b는 -10,000,000 이상 10,000,000 이하인 정수
@@ -58,7 +51,6 @@ public class SumBetweenNumbers {
         checkNumber(a, b);
         return sumBetweenNumbers(a, b);
     }
-
 
     public static void main(String[] args) {
         SumBetweenNumbers sn = new SumBetweenNumbers();

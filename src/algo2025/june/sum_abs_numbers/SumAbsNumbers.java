@@ -58,7 +58,7 @@ public class SumAbsNumbers {
         char[] chars = convertBooleanToSigns(signs);
         return getIntegersWithSign(absolutes, chars);
     }
-
+ 
     private char[] convertBooleanToSigns(boolean[] signs) {
         char[] newSigns = new char[signs.length];
         for(int i=0; i<newSigns.length; i++)

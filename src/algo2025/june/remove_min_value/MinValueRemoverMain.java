@@ -1,4 +1,4 @@
-package algo2025.june;
+package algo2025.june.remove_min_value;
 
 import java.util.Arrays;
 

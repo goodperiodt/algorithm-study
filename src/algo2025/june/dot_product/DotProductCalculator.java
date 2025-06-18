@@ -20,18 +20,18 @@ public class DotProductCalculator {
     }
 
     private void checkValidLength(int[] array1, int[] array2) {
-            if(isValidLength(array1))
-                // error 를 받는 클래스를 따로 만들 것.
-                throw new IllegalArgumentException("배열의 길이는 1이상 1000이하여야 합니다. array1.length: "+array1.length);
+        if(isValidLength(array1))
+            // error 를 받는 클래스를 따로 만들 것.
+            throw new IllegalArgumentException("배열의 길이는 1이상 1000이하여야 합니다. array1.length: "+array1.length);
 
-            if(isValidLength(array2))
-                throw new IllegalArgumentException("배열의 길이는 1이상 1000이하여야 합니다. array2.length: "+array2.length);
+        if(isValidLength(array2))
+            throw new IllegalArgumentException("배열의 길이는 1이상 1000이하여야 합니다. array2.length: "+array2.length);
+    }
+
+        private static boolean isValidLength(int[] array) {
+            // return array.length >= 1 && array.length <= 1000;
+            return array.length == 0 || array.length > 1000;
         }
-
-            private static boolean isValidLength(int[] array) {
-                // return array.length >= 1 && array.length <= 1000;
-                return array.length == 0 || array.length > 1000;
-            }
 
     private void checkValidElement(int[] array1, int[] array2) {
         for(int elementInArray: array1) {

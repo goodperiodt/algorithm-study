@@ -10,7 +10,7 @@ public class Main {
 
         DivisorCountBasedCalculator divisorCalc = new DivisorCountBasedCalculator();
         int result = divisorCalc.calculateSumByDivisorCount(left, right);
-        log.info(left+", "+right+": "+result);
+        log.info(left+", "+right+": "+result); // 52
 
     }
 }

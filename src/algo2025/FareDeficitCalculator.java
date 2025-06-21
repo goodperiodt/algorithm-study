@@ -13,8 +13,8 @@ package algo2025;
 public class FareDeficitCalculator {
     public long calculate(int price, int money, int count) {
         validateInputs(price, money, count);
-        int totalRideFare = (count > 1) ? calculateRideFareByCount(price, count) : price;
-        return money <= totalRideFare ? money - totalRideFare: 0;
+        int totalRideFare = calculateTotalRideFare(price, count);
+        return calculateDeficitAmount(money, totalRideFare);
     }
 
     private void validateInputs(int price, int money, int count) {
@@ -44,13 +44,17 @@ public class FareDeficitCalculator {
 
     // 1. 탑승 횟수에 따라 달라지는 총 이용금액 구하기
     // 탑승 횟수가 1이 아닐 경우, 탑승 횟수에 따른 놀이기구 이용료를 구하는 로직을 진행해야 한다.
-    private int calculateRideFareByCount(int price, int count) {
-        int totalRideFareByCount = 0;
+    private int calculateTotalRideFare(int price, int count) {
+        if(count == 1) return price;
 
+        int totalRideFareByCount = 0;
         for(;count>=1; count--) {
             totalRideFareByCount += count*price;
         }
-
         return totalRideFareByCount;
+    }
+
+    private long calculateDeficitAmount(int money, int totalRideFare) {
+        return money >= totalRideFare ? 0 : money - totalRideFare;
     }
 }

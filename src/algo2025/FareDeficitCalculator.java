@@ -23,21 +23,24 @@ public class FareDeficitCalculator {
         validateMoneyRange(money);
         validateRideCount(count);
     }
-        // price: int - 놀이기구 이용료, 1 ≤ price ≤ 2,500
-        private void validateRideFare(int price) {
-            if(price < 1 || price > 2500)
-                throw new IllegalArgumentException("놀이기구 이용료는 1원 이상 2,500원 이하여야 합니다.");
-        }
-        // money: long - 자본, 1 ≤ money ≤ 1,000,000,000
-        private void validateMoneyRange(int money) {
-            if(money < 1 || money > 1000000000)
-                throw new IllegalArgumentException("자본은 1원 이상 1,000,000,000만원 이하여야 합니다.");
-        }
-        // count: long - 놀이기구의 이용 횟수, 1 ≤ count ≤ 2,500
-        private void validateRideCount(int count) {
-            if(count < 1 || count > 2500 )
-                throw new IllegalArgumentException("놀이기구 탑승 횟수는 1회이상 2,500회 이하여야 합니다.");
-        }
+
+    // price: int - 놀이기구 이용료, 1 ≤ price ≤ 2,500
+    private void validateRideFare(int price) {
+        if(price < 1 || price > 2500)
+            throw new IllegalArgumentException("놀이기구 이용료는 1원 이상 2,500원 이하여야 합니다.");
+    }
+
+    // money: long - 자본, 1 ≤ money ≤ 1,000,000,000
+    private void validateMoneyRange(int money) {
+        if(money < 1 || money > 1000000000)
+            throw new IllegalArgumentException("자본은 1원 이상 1,000,000,000만원 이하여야 합니다.");
+    }
+
+    // count: long - 놀이기구의 이용 횟수, 1 ≤ count ≤ 2,500
+    private void validateRideCount(int count) {
+        if(count < 1 || count > 2500 )
+            throw new IllegalArgumentException("놀이기구 탑승 횟수는 1회이상 2,500회 이하여야 합니다.");
+    }
 
     // 1. 탑승 횟수에 따라 달라지는 총 이용금액 구하기
     // 탑승 횟수가 1이 아닐 경우, 탑승 횟수에 따른 놀이기구 이용료를 구하는 로직을 진행해야 한다.

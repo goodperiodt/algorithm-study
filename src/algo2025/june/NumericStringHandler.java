@@ -8,7 +8,7 @@ public class NumericStringHandler {
         return (s.length() == 4 || s.length() == 6)
                 // s.chars() -> 숫자들이 지니는 각 고유의 유니코드 값으로 IntStream 요소가 구성되어 있다.
                 // (Character::isDigit); --> (charInt-> Character.isDigit(charInt));
-                && s.chars().allMatch(Character::isDigit);
+                && s.chars().allMatch(c -> c>='0' && c<='9');
     }
 }
 

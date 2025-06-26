@@ -9,7 +9,7 @@ import java.util.*;
 // Greatest Common Divisor
 // Least Common Multiple
 public class GCDLCMCalculator {
-    public long[] solution(int n, int m) {
+    public long[] getGCDAndLCM(int n, int m) {
         return new long[] {
             getGCD(n, m),
             getLCM(n, m)

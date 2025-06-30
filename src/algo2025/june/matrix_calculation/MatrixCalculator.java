@@ -1,4 +1,4 @@
-package algo2025.june;
+package algo2025.june.matrix_calculation;
 
 import java.util.Arrays;
 
@@ -6,6 +6,11 @@ public class MatrixCalculator {
     public int[][] addMatrices(int[][] arr1, int[][] arr2) {
         validateSameShape(arr1, arr2);
         return sumElementWise(arr1, arr2);
+    }
+
+    public void print(int[][] matrix) {
+        for(int[] array : matrix)
+            System.out.println(Arrays.toString(array));
     }
 
     private void validateSameShape(int[][] arr1, int[][] arr2) {
@@ -28,10 +33,5 @@ public class MatrixCalculator {
                 result[i][j] = arr1[i][j]+arr2[i][j];
             }
         } return result;
-    }
-
-    public void print(int[][] matrix) {
-        for(int[] array : matrix)
-            System.out.println(Arrays.toString(array));
     }
 }

@@ -1,7 +1,5 @@
 package algo2025.june;
 
-import algo2025.FareDeficitCalculator;
-
 public class FareDeficitCalculatorMain {
     public static void main(String[] args) {
 

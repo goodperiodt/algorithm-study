@@ -1,4 +1,4 @@
-package algo2025;
+package algo2025.june;
 
 /*
 * 클래스명을 지을 때, 책임과(Single Responsibility) 의도에 맞게,

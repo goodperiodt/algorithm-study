@@ -8,30 +8,21 @@ public class WordCaseFormatter {
 
         for(int i = 0; i < words.length; i++) {
             StringBuilder sb = new StringBuilder(words[i]);
-            convertWords[i] = transformWord(words[i], sb);
+            convertWords[i] = transformWord(sb);
         }
 
         return String.join(" ", convertWords);
     }
 
-    private String transformWord(String word, StringBuilder sb) {
-        transformEvenToUpperCase(word, sb);
-        transformOddToLowerCase(word, sb);
+    private String transformWord(StringBuilder sb) {
+        for(int i=0; i<sb.length(); i++) {
+            char c = sb.charAt(i);
+            sb.setCharAt(i, i%2 == 0 ?
+                    Character.toUpperCase(c)
+                    : Character.toLowerCase(c)
+            );
+        }
         return sb.toString();
-    }
-
-    private StringBuilder transformEvenToUpperCase(String word, StringBuilder sb) {
-        for(int i = 0; i < word.length(); i+=2) {
-            char upperCase = Character.toUpperCase(sb.charAt(i));
-            sb.setCharAt(i, upperCase);
-        } return sb;
-    }
-
-    private StringBuilder transformOddToLowerCase(String word, StringBuilder sb) {
-        for(int i = 1; i < word.length(); i+=2) {
-            char lowerCase = Character.toLowerCase(sb.charAt(i));
-            sb.setCharAt(i, lowerCase);
-        } return sb;
     }
 }
 

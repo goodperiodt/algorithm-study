@@ -7,6 +7,7 @@ public class WordCaseFormatterMain {
 
         WordCaseFormatter wordCaseFormatter = new WordCaseFormatter();
         String converted = wordCaseFormatter.convert(test);
+        System.out.println("converted: "+converted);
 
         System.out.println(converted.equals(result));
     }

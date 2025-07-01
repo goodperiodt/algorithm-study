@@ -10,14 +10,15 @@ public class WordCaseFormatter {
         String[] convertWords = new String[words.length];
 
         for(int i = 0; i < words.length; i++) {
-            StringBuilder sb = new StringBuilder(words[i]);
-            convertWords[i] = transformWord(sb);
+            convertWords[i] = transformWord(words[i]);
         }
 
         return String.join(DELIMETER, convertWords);
     }
 
-    private String transformWord(StringBuilder sb) {
+    private String transformWord(String word) {
+        StringBuilder sb = new StringBuilder(word);
+
         for(int i=0; i<sb.length(); i++) {
             char c = sb.charAt(i);
             sb.setCharAt(i, isEvenIndex(i) ?
@@ -25,6 +26,7 @@ public class WordCaseFormatter {
                 Character.toLowerCase(c)
             );
         }
+
         return sb.toString();
     }
 

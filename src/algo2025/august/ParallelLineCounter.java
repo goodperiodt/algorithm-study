@@ -9,6 +9,7 @@ public class ParallelLineCounter {
     public static void main(String[] args) {
         HashMap<Integer, Integer> xCountMap;
         HashMap<Integer, Integer> yCountMap;
+
         int count=0;
 
         try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in)))
@@ -25,10 +26,11 @@ public class ParallelLineCounter {
             // y 좌표별로 점의 개수를 HashMap 으로 센다
             for(int i=0; i<pointNum; i++) {
                 String[] line = br.readLine().split(" ");
+                // key 값이 존재하면 해당 key 값과 매핑된 value 의 값을 꺼내 + 1 한 후 해당 key 값에 put 한다.
+                // key 값이 존재하지 않으면 defaultValue(0) 의 값에 + 1 한 후 해당 key 값에 put 한다.
                 xCountMap.put(Integer.valueOf(line[0]), xCountMap.getOrDefault(Integer.valueOf(line[0]), 0)+1);
                 yCountMap.put(Integer.valueOf(line[1]), yCountMap.getOrDefault(Integer.valueOf(line[1]), 0)+1);
             }
-
             // 개수가 2 이상인 경우만 직선 1개로 카운트
             Collection<Integer> xValues = xCountMap.values();
             Collection<Integer> yValues = yCountMap.values();

@@ -16,34 +16,38 @@ package algo2025.september.fourth;
     이 문자열이 나타내는 수 중 271보다 작거나 같은 수는 141, 159
     2개 입니다.
 */
-
-public class Solution {
-    public int solution(String t, String p) {
-        int pLength = p.length();
+public class NumericSubstringCounter {
+    // numeric + substring : 숫자와 관련된 부분 문자열, 숫자로 해석될 수 있는 부분 문자열
+    public int countLessThanEqualToTarget(String t, String target) {
+        int targetLength = target.length();
         int tLength = t.length();
-        int pInt = Integer.parseInt(p);
+        int condition = tLength - targetLength;
+
+        int targetValue = Integer.parseInt(target);
+        int count = 0;
 
         // t와 p의 문자열 길이가 같고,
         // 문자열을 숫자로 변환시 t가 p보다 적거나 같으면 1을 리턴한다.
-        if(pLength==tLength) {
-            if(Integer.parseInt(t)<=Integer.parseInt(p))
-                return 1;
-            return 0;
-        }
+        /* if(tLength==targetLength) {
+            int tInt = Integer.parseInt(t);
+            return tInt <= pInt ? 1:0;
+        } */
 
         // t와 p의 문자열의 길이가 다르다.
         // t: 3141592, t.substring(0, 0+3) --> "314"
-        int answer = 0;
-        int condition = tLength - pLength;
-        // t.substring(i, i+pLength).length() == pLength (x)
+
+        // t.substring(i, i+targetLength).length() == targetLength (x)
         // 0 <= 7 - 3
+
+        // ** for 문 처리시 tLength==targetLength 인 상황도 처리가 된다.
         for(int i=0; i <= condition; i++) {
-            // Integer.parseInt(t.substring(i, i+pLength)) <= pInt ?
-            String substring = t.substring(i, i + pLength);
-            int subInt = Integer.parseInt(substring);
-            if(subInt <= pInt) answer++;
+            String tPart = t.substring(i, i + targetLength);
+            int currentValue  = Integer.parseInt(tPart);
+
+            if(currentValue <= targetValue)
+                count++;
         }
 
-        return answer;
+        return count;
     }
 }

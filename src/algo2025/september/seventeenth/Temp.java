@@ -13,49 +13,28 @@ import jdk.internal.joptsimple.internal.Strings;
 
 public class Temp {
     public String[] solution(String[] strings, int n) {
-        // 버블정렬 구현하기
-        for(int outIndex = 0; outIndex < strings.length - 1; outIndex++) {
-            for(int innerIndex = 0; innerIndex < strings.length - 1 - outIndex; innerIndex++) {
-                char c1 = strings[innerIndex].charAt(n);
-                char c2 = strings[innerIndex + 1].charAt(n);
+        return sortByCharAtIndexThenLexical(strings, n);
+    }
 
-                // strings[innerIndex].compareTo(strings[innerIndex+1])>0 의 경우,
-                // strings[innerIndex] 가 strings[innerIndex+1] 보다 사전순으로 더 나중에 온다는 말
-                // 즉 strings[innerIndex+1], strings[innerIndex] 이렇게 배치되게 만들어야 한다는 것.
-                if(c1>c2 || (c1 == c2) && strings[innerIndex].compareTo(strings[innerIndex+1]) > 0) {
-                    String temp = strings[innerIndex];
-                    strings[innerIndex] = strings[innerIndex+1];
-                    strings[innerIndex+1] = temp;
-                }
+    private String[] sortByCharAtIndexThenLexical(String[] strings, int n) {
+        for(int i = 0; i < strings.length - 1; i++) {
+            for(int j = 0; j < strings.length - 1 - i; j++) {
+                if(shouldSwap(strings[j], strings[j+1], n))
+                    swap(strings, j);
             }
         } return strings;
     }
-    /* 부분적으로만 정렬이 이루어지는 제한적인 로직
-    public String[] solution(String[] strings, int n) {
-        // 인덱스 1의 문자가 같은 문자열이 여럿 일 경우, 사전순으로 앞선 문자열이 앞쪽에 위치합니다.
-        // ["sun", "bed", "car"]
-        String firstString = strings[0]; // String s0 = "sun";
-        System.out.println("1. String firstString = strings[0]; firstString: "+firstString);
 
-        for(int index = 1; index < strings.length; index++) {
-            // string[1].charAt(1); bed 의 e 가 c1 에 대입
-            // c1 = 'e';
-            char c1 = strings[index].charAt(n);
-            System.out.println("2. char c1 = strings[index].charAt(n); c1: "+c1);
+    private boolean shouldSwap(String a, String b, int n) {
+        char c1 = a.charAt(n);
+        char c2 = b.charAt(n);
 
+        return (c1 > c2) || ((c1 == c2) && (a.compareTo(b) > 0));
+    }
 
-            // char 타입 c 가 c1 보다 크다는 의미,
-            // firstString.charAt(1) --> u, u>e
-            if(firstString.charAt(n)>c1) {
-                String temp = firstString;
-                System.out.println("3. String temp = firstString; temp: "+temp);
-
-                strings[index-1] = strings[index]; // strings[0] = strings[1];
-                strings[index] = temp;
-                System.out.println("4. strings[index] = temp; string[index]: "+strings[index]);
-            } firstString = strings[index];
-            System.out.println("5. firstString = strings[index]; firstString: "+firstString);
-
-        } return strings;
-    } */
+    private void swap(String[] strings, int j) {
+        String temp = strings[j];
+        strings[j] = strings[j +1];
+        strings[j +1] = temp;
+    }
 }

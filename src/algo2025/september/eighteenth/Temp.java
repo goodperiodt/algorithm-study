@@ -1,41 +1,54 @@
 package algo2025.september.eighteenth;
 
-// @param - array: int[], commands: int[][]
-//ex. array - [1, 5, 2, 6, 3, 7, 4], i = 2, j = 5, k = 3
-//array의 2번째부터 5번째까지 자르면 [5, 2, 6, 3]입니다.
-//배열 정렬 후, [2, 3, 5, 6]
-//정렬된 배열의 3번째 숫자는 5
-// @return int[]
+import java.util.Arrays;
+
 public class Temp {
-    public int[] solution(int[] array, int[][] commands) {
+    private int[] findKthValueInSortedRanges(int[] array, int[][] commands) {
         int[] result = new int[commands.length];
-        int resultIndex = 0;
 
-        for(int[] command : commands) // command: [i, j, k]
-        {
-            int startIndex = command[0];
-            int endIndex = command[1];
-            int target = command[2];
+        for (int i=0; i< commands.length; i++){
+            int[] command = commands[i];
+            int[] subArray = extractRange(array, command[0], command[1]);
+            sortArray(subArray);
+            result[i] = subArray[command[2]-1];
+        }
+        return result;
+    }
 
-            int[] splitArray = new int[endIndex-startIndex+1]; // ex. 2번째부터 5번째까지
-            // 요소 두 번째는 인덱스1 --> startIndex-1
-            for(int i=startIndex-1, j=0; i<endIndex; i++, j++) {
-                splitArray[j]=array[i];
+    private int[] extractRange(int[] array, int begin, int end) {
+        int[] subArray = new int[end - begin + 1]; // ex. 2번째부터 5번째까지
+        // 요소 두 번째는 인덱스1 --> begin-1
+        // Arrays.copyOfRange(array, from, to) from 은 포함, to 는 제외라
+        // Arrays.copyOfRange(array, begin - 1, end) 이렇게 작성할 수도 있다.
+        for (int i = begin - 1, j = 0; i < end; i++, j++) {
+            subArray[j] = array[i];
+        }
+        return subArray;
+    }
+
+    private void sortArray(int[] subArray) {
+        // Arrays.sort(subArray);
+        for (int i = 0; i < subArray.length - 1; i++) {
+            for (int j = 0; j < subArray.length - 1 - i; j++) {
+                swapIfGreater(subArray, j);
             }
+        }
+    }
 
-            // 배열요소 정렬하기
-            for(int i=0; i< splitArray.length-1; i++) {
-                for(int j=0; j < splitArray.length-1-i; j++) {
-                    if(splitArray[j]>splitArray[j+1]) {
-                        int temp = splitArray[j];
-                        splitArray[j] = splitArray[j+1];
-                        splitArray[j+1] = temp;
-                    }
-                }
-            }
+    private void swapIfGreater(int[] subArray, int j) {
+        if (subArray[j] > subArray[j + 1]) {
+            int temp = subArray[j];
+            subArray[j] = subArray[j + 1];
+            subArray[j + 1] = temp;
+        }
+    }
 
-            result[resultIndex] = splitArray[target-1];
-            resultIndex++;
-        } return result;
+    public static void main(String[] args) {
+        int[] array = {1, 5, 2, 6, 3, 7, 4};
+        int[][] commands = {{2, 5, 3}, {4, 4, 1}, {1, 7, 3}};
+
+        Temp temp = new Temp();
+        int[] result = temp.findKthValueInSortedRanges(array, commands);
+        System.out.println(Arrays.toString(result));
     }
 }
